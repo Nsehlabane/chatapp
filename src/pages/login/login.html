@@ -1,0 +1,22 @@
+
+
+<ion-content padding class="content" >
+
+  <div class="main">
+    <ion-item color="orange1">
+        <ion-label statcked >Email: </ion-label>
+          <ion-input [(ngModel)]="email"  type="email" placeholder="Email address"></ion-input>
+      </ion-item>
+    
+      <ion-item color="orange1">
+        <ion-label statcked >Password: </ion-label>
+        <ion-input [(ngModel)]="password" type="password" placeholder="Password"></ion-input>
+      </ion-item>
+   
+      <div id="inner">
+        <button ion-button block color="orange3" (click)="signIn()">Log In</button>
+        <ion-label color="orange3" (click)="goToSignUp()">CREATE ACCOUNT</ion-label>
+        <ion-label color="orange3" (click)="forgotPassword()">FORGOT PASSWORD</ion-label>
+      </div>
+  </div>
+</ion-content>

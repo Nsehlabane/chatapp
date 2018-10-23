@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar color="orange3">
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="content">
+  <ion-item color="orange1">
+    <ion-label statcked>Email: </ion-label>
+      <ion-input type="email" [(ngModel)]="email" placeholder="Email address"></ion-input>
+  </ion-item>
+
+  <ion-item color="orange1">
+    <ion-label statcked>Password: </ion-label>
+      <ion-input type="password"  [(ngModel)]="password" placeholder="Password"></ion-input>
+  </ion-item>
+
+  <button ion-button block (click)="signIn()" color="orange3">Sign Up</button>
+
+  <ion-label color="orange3" text-center>After signing up please login</ion-label>
+</ion-content>

@@ -1,14 +1,62 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="orange3">
     <ion-title>
-      Ionic Blank
+      Chat
     </ion-title>
+    <ion-buttons end>
+      <button ion-button ion-icon-only (click)="exitChat()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+      <button ion-button ion-icon-only (click)="backToRooms()">
+          <ion-icon name="home"></ion-icon>
+        </button>
+
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content no-padding class="content">
+
+  <ion-list>
+      <ion-item *ngFor="let chat of chats" no-lines>
+
+      <div class="chat-status" text-center *ngIf="chat.type==='exit' || chat.type==='join';else message">
+          <p class="chat-date">{{chat.sendDate | date: 'short'}}</p>
+          <p class="chat-content-center">{{chat.message}}</p>
+      </div>
+
+      <ng-template #message>
+      <div class="chat-message2" text-right *ngIf="chat.user === userProfile.firstname">
+        <div class="right-bubble">
+             <span class="msg-name">Me:</span>
+             <span class="msg" text-wrap>{{chat.message}}</span>
+        </div>
+         <p class="msg-date">{{chat.sendDate | date:'short'}}</p>
+      </div>
+     
+      <div class="chat-message" text-left *ngIf="chat.user !== userProfile.firstname">
+          <div class="left-bubble">
+              <span class="msg-name">{{chat.firstname}} </span>
+              <span class="msg" text-wrap>{{chat.message}}</span><hr>
+          </div>
+            <p text-center class="msg-date">{{chat.sendDate | date:'short'}}</p>
+     </div>
+    </ng-template>
+
+    </ion-item>
+ </ion-list> 
 </ion-content>
+
+<ion-footer >
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-10 id="col1">
+        <ion-input type="text" placeholder="Type message here" [(ngModel)]="data.message"></ion-input>
+      </ion-col>
+
+      <ion-col col-2 (click)="sendMessage()" id="col2">
+          <ion-icon id="icon" name="send" color="light"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
